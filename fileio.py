@@ -2,47 +2,30 @@ import os
 import json
 from board import Board
 
-SAVE_FILE = "minesweeper_save.txt"
+save_file = "minesweeper_save.txt"
 
 def save_game(board):
-    
-    """This function saves the current board state to a file.
-    We use JSON for this."""
-    
+    #This function saves the current board state to a file.
     game_state = {'board': board.to_dict()}
-
     try:
-        with open(SAVE_FILE,"w") as file:
-            json.dump(game_state, file, indent=4)
-        print(f"Game saved to {SAVE_FILE}")
+        with open(save_file,"w") as f:
+            json.dump(game_state,f,i=4)
+        print(f"Game is saved to {save_file}")
     except IOError as e:
-        print(f"Error saving game: {e}")
+        print("Error in saving the game")
 
 def load_game():
-    
-    """This function loads a game state from a file.
-    It returns: 1)"Board" if "load" is successful.
-                  2)"None" if "file not found" or "error"."""
-        
-    if not os.path.exists(SAVE_FILE):
+    #This function loads a game state from a file.
+    #It returns the board if load is successful and none if there is an error   
+    if not os.path.exists(save_file):
         print("No save file found")
         return None
-
     try:
-        with open(SAVE_FILE,"r") as file:
-            game_state = json.load(file)
-
+        with open(save_file,"r") as f:
+            game_state = json.load(f)
             board = Board.from_dict(game_state['board'])
-
-            print(f"Game loaded from {SAVE_FILE}")
+            print(f"Game is loaded from {save_file}")
             return board
-
-    except IOError as e:
-        print(f"IO error occurred: {e}. Starting new game.")
-        return None
-    except json.JSONDecodeError as e:
-        print(f"JSON decode error: {e}. Starting new game.")
-        return None
-    except KeyError as e:
-        print(f"Missing key error: {e}. Starting new game.")
+    except Exception:
+        print("An Error has occured. Starting new game...")
         return None
