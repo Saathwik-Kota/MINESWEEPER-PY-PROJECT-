@@ -76,7 +76,7 @@ No special installation is required beyond having Python installed. Simply clone
 2.  Run the main script:
 
     ```bash
-    python main.py
+    python3 main.py
     ```
 
 3.  Follow the prompts to start a `new` game or `load` a previous one!
