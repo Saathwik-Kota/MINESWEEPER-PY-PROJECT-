@@ -11,8 +11,8 @@ def save_game(board):
         with open(save_file,"w") as f:
             json.dump(game_state,f,i=4)
         print(f"Game is saved to {save_file}")
-    except Exception:
-        print("Error in saving the game")
+    except Exception as e:
+        print(f"An error occured while saving the game : {e}")
 
 def load_game():
     #This function loads a game state from a file.
@@ -26,6 +26,7 @@ def load_game():
             board = Board.from_dict(game_state['board'])
             print(f"Game is loaded from {save_file}")
             return board
-    except Exception:
-        print("An Error has occured. Starting new game...")
+    except Exception as e:
+        print(f"An Error has occured while loading the game : {e}")
+        print("Starting new game...")
         return None
