@@ -6,11 +6,11 @@ def reveal_box(board,row,col):
        
        it returns:
            'mine' if the box is a mine
-           'ok' if the reveal was successful
+           'ok' if the box has been revealed
            'invalid' if the move is invalid (if already revealed or flagged)'''
     
     
-    if not (0<=row<board.rows and 0<=col<board.cols):
+    if not (0 <= row <board.rows and 0 <= col < board.cols):
         return 'invalid'
     #checks if the row or col is out of bounds
     
@@ -45,7 +45,7 @@ def toggle_flag(board,row,col):
            'invalid' if the box is revealed'''
            
     
-    if not(0<=row<board.rows and 0<=col<board.cols):
+    if not(0 <= row < board.rows and 0 <= col < board.cols):
         return 'invalid'
     #checks if the row or col is out of bounds
     
@@ -65,7 +65,7 @@ def check_win_condition(board):
     
     '''checks if the game is won
        win condition:
-           all non-mine boxes have been revealed'''
+           all non-mine boxes should be revealed'''
            
     for r in range(board.rows):
         for c in range(board.cols):
@@ -75,4 +75,5 @@ def check_win_condition(board):
             # if a box is not a mine and it isn't revealed, the game isn't over
     return True
     #if all non-mine boxes are revealed, the game has been won
+
        
