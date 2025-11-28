@@ -66,7 +66,6 @@ def main_game_loop():
             board = Board(rows=9, cols=9, no_mines=10)
             game_state = 'playing'
             print("Starting new game")
-            # Note: Mines are not placed until the first click
             continue
         if action == 'load':
             loaded_board = fileio.load_game()
