@@ -1,5 +1,3 @@
-import random
-import time
 from board import Board
 import game_logic
 import fileio
