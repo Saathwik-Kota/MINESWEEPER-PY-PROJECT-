@@ -11,7 +11,7 @@ def save_game(board):
         with open(save_file,"w") as f:
             json.dump(game_state,f,i=4)
         print(f"Game is saved to {save_file}")
-    except IOError as e:
+    except Exception:
         print("Error in saving the game")
 
 def load_game():
