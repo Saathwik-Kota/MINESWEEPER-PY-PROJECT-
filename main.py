@@ -86,9 +86,7 @@ def main_game_loop():
             print("Please start a 'new' game or 'load' a game first.")
             continue
 
-        # First click handling: Place mines *after* the first click
-        if not board.mines_placed:
-            
+        if not board.mines_placed:  
             board.place_mines()
 
         if game_state == 'playing':
